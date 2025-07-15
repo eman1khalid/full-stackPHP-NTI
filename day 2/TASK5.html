@@ -1,0 +1,107 @@
+<html>
+<head>
+</head>
+<body>
+   <style>
+      body{
+         padding: 100px;
+      }
+      .card {
+         background-color: aquamarine;
+         padding: 10px;
+         border-radius: 10px;
+         font-family: Courier, monospace;
+         display: block;
+         margin: 15px auto;
+         box-shadow: 5px 5px 5px darkgray;
+         width: 70%;
+         transition: all 2s ease-in-out;
+         text-align: center;
+        
+      }
+        .button{
+         background-color: indianred;
+         border: none;
+         color: white;
+         padding: 15px;
+        
+
+        }
+       .button:hover{
+         background-color: darkred;
+         transition:scale(5);
+      }
+      .card .form input, .card .form select, .card .form textarea{display: block; width: 100%;}
+      .card .table{width: 100%;}
+   </style>
+ <div class="card">
+   <form class="form">
+ <label>Full Name</label>
+ <input type="text" name="full-name" >
+ <label>email</label>
+ <input name="email" type="email">
+ <label>gender</label>
+ <select name="gender">
+    <option value="0">male</option>
+    <option value="1">female</option>
+ </select>
+ <label>massege</label>
+  <textarea name="massege" id="">
+  </textarea>
+   
+</form>
+   <button class="button" >btn</button>
+ </div>
+
+ <div class="card"
+ >
+   <table border="1" class="table" >
+   <tr class="head">
+    <td># </td>
+    <td>Name</td>
+    <td>subject</td>
+    <td>grade</td>
+   </tr>
+   <tr>
+    <td>1</td>
+    <td>Ahmed</td>
+    <td>math</td>
+    <td>95</td>
+   </tr>
+   <tr>
+    <td>2</td>
+    <td>salma</td>
+    <td>scince</td>
+    <td>88</td>
+   </tr>
+ </table>
+   <button  class="button" >btn</button>
+ </div>
+
+
+ <div class="card">
+   <ul class="list">
+    <li>Milk</li>
+    <li>Bread</li>
+    <li>eggs</li>
+</ul>
+   <button class="button" >btn</button>
+ </div>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

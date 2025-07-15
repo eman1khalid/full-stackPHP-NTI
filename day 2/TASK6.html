@@ -1,0 +1,73 @@
+<html>
+<head>
+</head>
+<body>
+   <style>
+      .card1 {
+         background-color:burlywood;
+         padding: 10px;
+         border-radius: 10px;
+         font-family: Courier, monospace;
+         display: block;
+         margin: 15px auto;
+         box-shadow: 5px 5px 5px darkgray;
+         width: 70%;
+         transition: all 2s ease-in-out;
+         text-align: center;
+        
+      }
+      .card {
+         background-color: aquamarine;
+         padding: 10px;
+         border-radius: 10px;
+         font-family: Courier, monospace;
+         display: block;
+         margin: 15px auto;
+         box-shadow: 5px 5px 5px darkgray;
+         width: 70%;
+         transition: all 2s ease-in-out;
+         text-align: center;
+        
+      }
+   </style>
+   <div class="card1">
+     <h6>enter name</h6>
+     <input id="n1" type="text" onkeyup="naame()">
+     <h1 id="h"></h1>
+     <input id="deg" type="number">
+     <button id="click" onclick="graad()" type="button">click</button>
+   </div>
+   <div class="card">
+     <p id="d1"></p>
+   </div>
+
+   <script>
+
+   function naame(){
+     let n= document.getElementById("n1").value;
+     document.getElementById("h").innerHTML="hellow "+n+" !";
+   }
+   function graad (){
+      let d=document.getElementById("deg").value;
+      if(d>85){document.getElementById("d1").innerHTML="ممتاز";}
+      else if (d>75){document.getElementById("d1").innerHTML="جيد جدا";}
+      else if(d>65){document.getElementById("d1").innerHTML="جيد";}
+      else{document.getElementById("d1").innerHTML="راسب";}
+   }
+   </script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
