@@ -26,9 +26,14 @@ include("index.php"); ?>
       $_SESSION["username"]=$row["username"];
       $_SESSION["role"]=$row["role"];
       $_SESSION["logstate"]=true;
-      header("Location:project.php");
-      exit();}}}
-      if($_SESSION["logstate"]=="false"){ ?>
+
+     }}}
+     $state=$_SESSION["logstate"];
+     $username= $_SESSION["username"];
+            
+
+      if($_SESSION["logstate"]==false){
+        $log=mysqli_query($con,"INSERT INTO `log`( `email`, `state`) VALUES ('$email','fail')");?>
       <div class="container mt-5 p-4">
     <div class="row justify-content-center d-flex mt-5">
     <div class="alert alert-danger" role="alert">
@@ -37,7 +42,8 @@ include("index.php"); ?>
     </div>
     </div>
 
-      <?php } }}?>
+      <?php }else{ $log=mysqli_query($con,"INSERT INTO `log`( `email`, `state`) VALUES ('$email','Successful')"); header("Location:project.php");
+      exit();} }}?>
           <form class="was-validated " method="POST" enctype="multipart/form-data">
             <div class="row justifiy-content-center d-flex mt-5">
            

@@ -10,6 +10,7 @@ require("navbar.php");
 
 
 ?>
+
   <style>
     .card-img-top {
       height: 200px;          
