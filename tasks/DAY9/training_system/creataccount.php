@@ -29,12 +29,12 @@ include("index.php"); ?>
     <div class="card-body">
     <h5 class="card-title"><?=$username?></h5>
     <p class="card-text"><?=$email?></p>
-    <a href="DAY9-products.php" class="btn btn-primary active  col-md-4" ">go to products</a>
+    
     </div>
     </div>
     <div class="alert alert-success" role="alert">
     ✅account created successfully
-     </div></div>
+     </div>
 
 
 <?php }}?>
