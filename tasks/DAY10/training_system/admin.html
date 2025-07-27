@@ -62,41 +62,39 @@ fetch("navbar.php",{ method:"POST", headers: { "Content-Type": "application/json
 }
 })
 
-fetch("Enrollments/", {method:"GET"}).then(re=>re.json()).then(re=>
+fetch("admin/", {method:"GET"}).then(re=>re.json()).then(re=>
 {if(re.role=="admin"){
-  document.getElementById("add").innerHTML="<a href='Enrollments_add.html' class='btn btn-success active col-md-3'    >+add Enrollment</a>"
+  document.getElementById("add").innerHTML="<a href='admin_add.html' class='btn btn-success active col-md-3'    >+add user or admin</a>"
   document.getElementById("thead").innerHTML=
-"<th scope='col' >name</th><th scope='col' >title</th><th scope='col' >grade</th><th scope='col' >enrollment_date</th><th scope='col' >action</th>";
-re.Enrollment.forEach(r => {
+"<th scope='col' >username</th><th scope='col' >Email</th><th scope='col' >role</th><th scope='col' >action</th>";
+re.admin.forEach(r => {
 document.getElementById("td").innerHTML+="<tr>"+
-     "<td>"+r.name+"</td>"+
-     "<td>"+r.title+"</td>"+
-     "<td>"+r.grade+"</td>"+
-     "<td>"+r.enrollment_date+"</td>"+
+     "<td>"+r.username+"</td>"+
+     "<td>"+r.email+"</td>"+
+     "<td>"+r.role+"</td>"+
     "<td >"+
-    "<a href='Enrollments_edit.html?id="+r.id+"' class= 'bg-warning btn me-2'    >edit</a>"+
-    "<button class= 'bg-danger btn me-2' onclick='deleteEnrollment("+r.id+",\""+r.title+"\",this)'>Delete</button>"+
+    "<a href='admin_edit.html?email="+r.email+"' class= 'bg-warning btn me-2'    >edit</a>"+
+    "<button class= 'bg-danger btn me-2' onclick='deleteadmin(\""+r.email+"\",this)'>Delete</button>"+
  "</td>"+"</tr>";
 })} 
 else{document.getElementById("thead").innerHTML=
-"<th scope='col' >name</th><th scope='col' >title</th><th scope='col' >grade</th><th scope='col' >enrollment_date</th>";
-re.Enrollment.forEach(r => {
+"<th scope='col' >username</th><th scope='col' >Email</th><th scope='col' >role</th>";
+re.admin.forEach(r => {
 document.getElementById("td").innerHTML+="<tr>"+
-     "<td>"+r.name+"</td>"+
-     "<td>"+r.title+"</td>"+
-     "<td>"+r.grade+"</td>"+
-     "<td>"+r.enrollment_date+"</td>"+
+     "<td>"+r.username+"</td>"+
+     "<td>"+r.email+"</td>"+
+     "<td>"+r.role+"</td>"+
+     
     "</tr>";})}
         
 })
-function deleteEnrollment (id,title,btn){
-  fetch("Enrollments/",{method:"DELETE",    headers: {"Content-Type": "application/json"},body:JSON.stringify({"id":id ,"title":title})}).then(re=>re.json()).then(re=>{  console.log("hi");
-    
+function deleteadmin (email,btn){
+  fetch("admin/",{method:"DELETE",    headers: {"Content-Type": "application/json"},body:JSON.stringify({"email":email})}).then(re=>re.json()).then(re=>{
     if(re.response=="fail"){alert(re.massege);}else{  
           // حذف الصف من الجدول مباشرة بدون إعادة تحميل
       btn.closest("tr").remove();
 }
-  }).catch(err => console.error("Fetch error:", err));
+  })
 }
 
 </script>
