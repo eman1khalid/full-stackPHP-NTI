@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+</head>
+ <style>
+        body{
+            background-color: pink;
+        }
+    </style>
+
+<body>
+<nav  class="bg-info">
+  <ul class="nav nav-tabs ">
+    
+  <li class="nav-item nav-left">
+   <a class="nav-link " aria-current="page" href="project.php"><strong class="text-light" ><h5>Training System(<span id="s"></span>)</h5></strong></a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link  " aria-current="page" href="student.html">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  " href="courses.html">Courses</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  " href="Enrollments.html">Enrollments</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  nav-left" href="logout.php">logout</a>
+  </li>
+    </nav>
+    <div class="container mt-5 " >
+    <div class=" row " id="div">
+
+      </div>
+</div>
+    <style>
+    .card-img-top {
+      height: 200px;          
+      object-fit: cover;      /* عشان الصورة تتملى الإطار بدون تشويه */
+    }
+  </style>
+  <div class="container mt-5 ">
+    <div class=" row gap-5">
+
+<div class="card" style="width: 25rem;">
+  <img src="img/student.jpg" class="card-img-top img-thumbnail fixed-size" alt="...">
+  <div class="card-body text-center">
+    <h5 class="card-title">students</h5>
+    <p class="card-text" id="st"></p>
+    <a href="student.html" class="btn btn-info">view</a>
+  </div>
+</div>
+
+<div class="card" style="width: 25rem;">
+  <img src="img/course.jpg" class="card-img-top img-thumbnail fixed-size" alt="...">
+  <div class="card-body text-center">
+    <h5 class="card-title">courses</h5>
+    <p class="card-text" id="c"></p>
+    <a href="courses.html" class="btn btn-info">view</a>
+  </div>
+</div>
+
+
+<div class="card" style="width: 25rem;">
+  <img src="img/enrollments.jpg" class="card-img-top img-thumbnail fixed-size" alt="...">
+  <div class="card-body text-center">
+    <h5 class="card-title">enrollments</h5>
+    <p class="card-text" id="e"></p>
+    <a href="Enrollments.html" class="btn btn-info	">view</a>
+  </div>
+</div>
+
+</div></div>
+</body>
+</html>
+<script>
+fetch("project.php",{ method:"POST", headers: { "Content-Type": "application/json" }}).then(r=>r.json()).then(r=>{
+document.getElementById("st").innerText="number students :"+r.student;
+document.getElementById("c").innerText="number cousrses :"+r.course;
+document.getElementById("e").innerText="number enrollments : "+r.enrollment;});
+fetch("navbar.php",{ method:"POST", headers: { "Content-Type": "application/json" }}).then(r=>r.json()).then(r=>{
+  document.getElementById("s").innerText=r.username+"("+r.role+")";
+  if(r.role=="admin"){
+   document.getElementById("div").innerHTML="<div class='col-md-2' > <a href='../admin/dp.php' class='btn btn-outline-info w-100'>view admin</a></div><div class='col-md-2 '><a href='viewloginstatuse/logintable.html' class='btn btn-outline-secondary w-100'>view login</a></div>";
+}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

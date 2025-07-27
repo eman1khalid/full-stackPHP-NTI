@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+ <style>
+        body{
+            background-color: pink;
+        }
+ </style>
+
+<body>
+  <nav  class="bg-info">
+  <ul class="nav nav-tabs ">
+    
+  <li class="nav-item nav-left">
+   <a class="nav-link " aria-current="page" href="project.html"><strong class="text-light" ><h5>Training System(<span id="s"></span>)</h5></strong></a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link  " aria-current="page" href="student.html">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  " href="courses.html">Courses</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  " href="Enrollments.html">Enrollments</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  nav-left" href="logout.php">logout</a>
+  </li>
+    </nav>
+    <div class="container mt-5 " >
+    <div class=" row " id="div">
+
+      </div>
+  </div>
+
+<div class="container mt-5 bg-info">
+    <div class=" row ">
+    <form class="was-validated " method="POST" enctype="multipart/form-data" id="addstudent">
+        <div class="row justify-content-center d-flex mt-5">
+           
+            <div class="  mt-3  ">
+             <label for="validationServerUsername" class="form-label text-light"> name</label>
+            <input type="text" class="form-control" id="name"  required>
+            </div>
+             
+              <div class="  mt-3 ">
+             <label for="validationServerUsername" class="form-label text-light">email</label>
+            <input type="email" class="form-control" id="email"  required>
+            </div>
+             <div class="  mt-3 ">
+             <label for="validationServerUsername" class="form-label text-light">phone</label>
+            <input type="number" class="form-control" id="phone"  required>
+            </div>
+            
+             <div class="  mt-3">
+             <label for="validationServer04" class="form-label">date_of_birth </label>
+             <input type="date" class="form-control" id="date"  required>
+            </div>
+            <div class="  col-md-12 d-flex mt-5 gap-2">
+            <button type="submit" class="btn  btn-success  col-md-6 mr-5" > add</button>
+           
+             </div>
+            
+             </div> </div>
+
+          </form>
+
+        </div>
+    </div>
+
+
+
+</body></html>
+
+ <script>
+fetch("navbar.php",{ method:"POST", headers: { "Content-Type": "application/json" }}).then(r=>r.json()).then(r=>{
+  document.getElementById("s").innerText=r.username+"("+r.role+")";
+  if(r.role=="admin"){
+   document.getElementById("div").innerHTML=
+   "<div class='col-md-2' > <a href='admin/dp.php' class='btn btn-outline-info w-100'>view admin</a></div><div class='col-md-2 '><a href='viewloginstatuse/logintable.html' class='btn btn-outline-secondary w-100'>view login</a></div>";
+}
+});
+  document.getElementById("addstudent").addEventListener("submit", function(e) {
+            e.preventDefault();
+  const data={
+      "name":document.getElementById("name").value,
+      "email":document.getElementById("email").value,
+      "phone":document.getElementById("phone").value,
+      "date":document.getElementById("date").value
+ }
+ fetch("students/",{ method:"POST", headers: { "Content-Type": "application/json" }, body:JSON.stringify(data) }).then(re=>re.json()).then(
+  re=>{
+    if(re.response=="fail"){
+      alert(re.massege);
+    }else{
+      alert(re.massege);
+      window.location.href="student_add.html";
+    }})})
+
+
+
+</script>
