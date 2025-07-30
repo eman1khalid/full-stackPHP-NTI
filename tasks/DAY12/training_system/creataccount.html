@@ -1,0 +1,65 @@
+<head>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+</head>
+<div class="container mt-5">
+    <div class=row>
+        <div class="col-4 mx-auto mt-5 container bg-info">
+ <style>
+        body{
+            background-color: pink;
+        }
+    </style>
+             
+    <div class="card bg-info text-center"   id="ca">
+     </div>
+    <body>
+
+
+  <form class="row g-3 needs-validation " method="POST" enctype="multipart/form-data" id="creat"novalidate>
+ 
+  <div class="col-md-12 mt-5">
+    <label for="username" class="form-label text-light">username</label>
+    <input type="text" class="form-control" name="username" id="username"  required></div>
+  <div class="col-md-12 mt-5">
+    <label for="email" class="form-label text-light">email</label>
+    <input type="email" class="form-control" id="email" name="email"  required></div>
+  <div class="col-md-12 mt-5">
+    <label for="password" class="form-label text-light">password</label>
+    <input type="password" class="form-control" id="password" name="password"  required></div>
+    <div class="col-md-12 mt-5"> 
+    <button type="submit" class="btn btn-primary w-100">sign up</button>
+    <a href="register.html" class="btn btn-primary active  w-100 mt-5" >login</a></div>
+</div> </div> </div> </body>
+<script>
+  document.getElementById("creat").addEventListener("submit", function(e) {
+            e.preventDefault();
+  const data={
+      "username":document.getElementById("username").value,
+      "email":document.getElementById("email").value,
+      "password":document.getElementById("password").value
+ }
+
+fetch("creataccount.php",{method:"POST", headers: { "Content-Type": "application/json" },body:JSON.stringify(data) }).then(re=>re.json()).then(
+    re=>{
+   if(re.response=="fail"){
+      alert(re.massege);}
+      else{
+        document.getElementById("ca").innerHTML="<h5 class='card-title' >"+re.username+
+        "</h5><p class='card-text' >"+re.email+"</p><div class='alert alert-success' role='alert' >"+re.massege+"</div>";
+
+      }}
+)})
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
