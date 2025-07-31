@@ -1,0 +1,17 @@
+{
+    "name": "israa/file-demo",
+    "autoload": {
+        "psr-4": {
+            "Israa\\FileDemo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "eman",
+            "email": "eman1245khalid@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}
